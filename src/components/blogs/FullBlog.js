@@ -6,7 +6,7 @@ import blogImage from './meet-gif.gif';
 const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 const URL = "https://blog-django-z.herokuapp.com/posts/"
 
-class Blogs extends Component {
+class FullBlog extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,6 +25,7 @@ class Blogs extends Component {
 
     render() {
         const blogs = this.state.blogs.map((blog, index) => {
+            console.log(blog.image_url)
             return <Blog
                 key={index}
                 title={blog.title}
@@ -40,4 +41,4 @@ class Blogs extends Component {
     }
 }
 
-export default Blogs;
+export default FullBlog;
