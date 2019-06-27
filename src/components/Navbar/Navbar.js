@@ -5,19 +5,19 @@ class Navbar extends Component {
 
     render() {
         return (
-            <div>
+            <div className="mb-4">
                 <nav className="navbar navbar-expand-lg navbar-light justify-content-between bg-light ">
                     <ul className="navbar-nav pill-left">
                         <li className="nav-item">
-                            <a className="nav-link active" href="#">Blogs</a>
+                            <Link to="/" className="nav-link">Blogs</Link>
                         </li>
                     </ul>
                     <ul className="navbar-nav pull-right">
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Login</a>
+                            <Link to="/login" className="nav-link">Login</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Register</a>
+                            <Link to="/signup" className="nav-link">Sign Up</Link>
                         </li>
                     </ul>
                 </nav>
