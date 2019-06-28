@@ -7,7 +7,6 @@ import { fetchAction } from './actions/getBlogs';
 class Blogs extends Component {
     componentDidMount() {
         this.props.fetchAction();
-        console.log(this.props)
     }
 
 

@@ -4,6 +4,24 @@ import { Link } from 'react-router-dom';
 class Navbar extends Component {
 
     render() {
+        let pullRight = "";
+
+        if (this.props.loggedIn) {
+            pullRight = <ul className="navbar-nav pull-right">
+                <li className="nav-item">
+                    <Link to="/login" className="nav-link">Login</Link>
+                </li>
+            </ul>
+        } else {
+            pullRight = <ul className="navbar-nav pull-right">
+                <li className="nav-item">
+                    <Link to="/login" className="nav-link">Login</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/signup" className="nav-link">Sign Up</Link>
+                </li>
+            </ul>
+        }
         return (
             <div className="mb-4">
                 <nav className="navbar navbar-expand-lg navbar-light justify-content-between bg-light ">
@@ -12,14 +30,7 @@ class Navbar extends Component {
                             <Link to="/" className="nav-link">Blogs</Link>
                         </li>
                     </ul>
-                    <ul className="navbar-nav pull-right">
-                        <li className="nav-item">
-                            <Link to="/login" className="nav-link">Login</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/signup" className="nav-link">Sign Up</Link>
-                        </li>
-                    </ul>
+                    {pullRight}
                 </nav>
             </div>
 
