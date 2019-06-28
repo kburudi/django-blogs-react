@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
@@ -39,7 +41,6 @@ class Login extends Component {
                 localStorage.setItem('token', data.token)
             })
             .catch(err => {
-                console.log(err);
                 this.setState({ 'loggedin': false })
                 this.setState({ 'invalid': true })
                 localStorage.setItem('token', undefined)
@@ -63,46 +64,54 @@ class Login extends Component {
         }
     }
 
+
+
+
     render() {
+
         return (
-            <div>
-                <div className="col-5 offset-3">
-                    <form action="" className="form" onSubmit={this.handleSubmit}>
-                        <div className='d-none error-con form-group text-center py-2'>
-                            <span className="error d-none text-danger"> Invalid  Email or password </span>
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="email"
-                                placeholder="Enter Your Email"
-                                value={this.state.email}
-                                onChange={this.handleLoginData("email")}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="password"
-                                className="form-control"
-                                id="password"
-                                placeholder="Enter Your Password"
-                                value={this.state.password}
-                                onChange={this.handleLoginData("password")}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="submit"
-                                id="login"
-                                className="form-control btn btn-info"
-                                value="Login"
-                            />
-                        </div>
-                    </form>
+            <div className="">
+                <div className="row mt-5">
+                    <div className="col-5 offset-3">
+                        <form action="" className="form" onSubmit={this.handleSubmit}>
+                            <div className='d-none error-con form-group text-center py-2'>
+                                <span className="error d-none text-danger"> Invalid  Email or password </span>
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="email"
+                                    placeholder="Enter Your Email"
+                                    value={this.state.email}
+                                    onChange={this.handleLoginData("email")}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="password"
+                                    className="form-control"
+                                    id="password"
+                                    placeholder="Enter Your Password"
+                                    value={this.state.password}
+                                    onChange={this.handleLoginData("password")}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="submit"
+                                    id="login"
+                                    className="form-control btn btn-info"
+                                    value="Login"
+                                />
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
+                {this.redirectLogin()}
             </div>
-        );
+        )
     }
 }
 
