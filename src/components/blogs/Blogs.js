@@ -1,37 +1,32 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Blog from './blog/Blog';
+import Blog from './actions/Blog';
 import blogImage from './meet-gif.gif';
-
-const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-const URL = "https://blog-django-z.herokuapp.com/posts/"
+import { connect } from 'react-redux';
+import { fetchAction } from './actions/getBlogs';
 
 class Blogs extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            blogs: []
-        }
+    componentDidMount() {
+        this.props.fetchAction();
+        console.log(this.props)
     }
 
-    componentDidMount() {
-        axios.get(proxyUrl + URL).then((response) => {
-            this.setState({
-                blogs: response.data
-            })
-        }
-        );
-    }
 
     render() {
-        const blogs = this.state.blogs.map((blog, index) => {
-            return <Blog
-                key={index}
-                title={blog.title}
-                content={blog.content}
-                image={blog.image_url ? blog.image_url : blogImage}
-            />
-        });
+        let blogs = [];
+        if (this.props.blogs !== undefined) {
+            blogs = this.props.blogs.map((blog, index) => {
+                return <Blog
+                    key={index}
+                    title={blog.title}
+                    content={blog.content}
+                    image={blog.image_url ? blog.image_url : blogImage}
+                />
+            });
+        } else {
+            blogs = <div>
+                <h1>No blogs found</h1>
+            </div>
+        }
         return (
             <div className="row col-12 ml-3">
                 {blogs}
@@ -40,4 +35,8 @@ class Blogs extends Component {
     }
 }
 
-export default Blogs;
+const mapStateToProps = (state) => ({
+    blogs: state.blogs.blogs
+})
+
+export default connect(mapStateToProps, { fetchAction })(Blogs);
