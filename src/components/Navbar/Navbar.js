@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import authWrapper from '../../hoc/authWrapper';
 
 class Navbar extends Component {
 
@@ -39,4 +38,4 @@ class Navbar extends Component {
     }
 }
 
-export default authWrapper(Navbar);
+export default Navbar;

@@ -1,11 +1,10 @@
 
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import store from '../stores/store';
 import Layout from '../hoc/Layout';
 import Blogs from '../components/blogs/Blogs';
-import Login from '../components/users/Login';
-import Signup from '../components/users/Signup';
+import Login from '../components/users/Login/Login';
+import Signup from '../components/users/Signup/Signup';
 import Navbar from '../components/Navbar/Navbar';
 
 
