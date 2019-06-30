@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Blog from './actions/Blog';
+import Blog from './forms/Blog';
 import blogImage from './meet-gif.gif';
 import { connect } from 'react-redux';
-import { fetchAction } from './actions/getBlogs';
+import { fetchAction } from '../../actions/getBlogs';
 
 class Blogs extends Component {
     componentDidMount() {

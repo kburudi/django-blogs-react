@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Navbar extends Component {
 
     render() {
         let pullRight = "";
+        console.log(this.props.loggedIn)
+
+        console.log(localStorage.token)
 
         if (this.props.loggedIn) {
             pullRight = <ul className="navbar-nav pull-right">
                 <li className="nav-item">
-                    <Link to="/login" className="nav-link">Login</Link>
+                    <Link to="/login" className="nav-link">Logout</Link>
                 </li>
             </ul>
         } else {
@@ -38,4 +42,8 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+    loggedIn: state.logedUser.loggedIn,
+})
+
+export default connect(mapStateToProps, null)(Navbar);

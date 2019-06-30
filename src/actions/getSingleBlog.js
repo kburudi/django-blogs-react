@@ -2,19 +2,19 @@ import {
     FETCHING_BLOGS,
     FETCH_SUCCESS,
     FETCH_ERROR
-} from '../../../constants/blogConsts';
+} from '../constants/blogConsts';
 import axios from 'axios';
 
 
 const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 const URL = "https://blog-django-z.herokuapp.com/posts/"
 
-export const fetchAction = () => dispatch => {
+export const fetchAction = (blogID) => dispatch => {
     dispatch({
         type: FETCHING_BLOGS,
     });
     axios
-        .get(proxyUrl + URL)
+        .get(proxyUrl + URL + blogID, '/')
         .then(res => {
             const blogs = res.data;
             dispatch({

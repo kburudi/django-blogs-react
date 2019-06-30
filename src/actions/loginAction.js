@@ -2,7 +2,7 @@ import {
     LOGINGIN_USER,
     LOGIN_ERROR,
     LOGIN_SUCCESS
-} from '../../../../constants/loginConstants'
+} from '../constants/loginConstants'
 import axios from 'axios';
 
 
