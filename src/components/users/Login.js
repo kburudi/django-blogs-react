@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import LoginForm from './LoginForm';
-import { loginAction } from './actions/loginAction';
+import LoginForm from './forms/LoginForm';
+import { loginAction } from '../../actions/loginAction';
 import { connect } from 'react-redux';
 
 
@@ -44,6 +44,12 @@ class Login extends Component {
             return <Redirect to='/' />
         }
 
+        if (this.props.loading) {
+            <div class="spinner-border text-success" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        }
+
         if (this.props.error !== null) {
             console.log(this.props.invalid)
             document.querySelector('.error').classList.remove('d-none')
@@ -77,7 +83,8 @@ class Login extends Component {
 
 const mapStateToProps = (state) => ({
     loggedIn: state.logedUser.loggedIn,
-    error: state.logedUser.error
+    error: state.logedUser.error,
+    loading: state.logedUser.loading,
 })
 
 export default connect(mapStateToProps, { loginAction })(Login);
