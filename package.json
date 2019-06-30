@@ -4,8 +4,8 @@
   "description": "Fetching Django blogs app with react",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "start-dev": "webpack-dev-server --open --hot --mode development",
+    "dev": "node server.js",
+    "start": "webpack-dev-server --open --hot --mode development",
     "build": "webpack --mode production",
     "test": "jest --verbose --watchAll --coverage",
     "test:coverage": "jest --verbose --coverage"
