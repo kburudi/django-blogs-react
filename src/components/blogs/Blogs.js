@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Blog from './forms/Blog';
-import blogImage from './meet-gif.gif';
 import { connect } from 'react-redux';
 import { fetchAction } from '../../actions/getBlogs';
 
@@ -18,7 +17,7 @@ class Blogs extends Component {
                     key={index}
                     title={blog.title}
                     content={blog.content}
-                    image={blog.image_url ? blog.image_url : blogImage}
+                    image={blog.image_url ? blog.image_url : null}
                 />
             });
         } else {
